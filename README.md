@@ -1,6 +1,9 @@
 <p align="center"><img src="assets/favicon.svg" width="72" alt="Dashboard icon"></p>
 
 # Amazon India Business Dashboard
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://amazon-india-dashboard-edyavpmmhoh8xbqt8eaezt.streamlit.app)
+
+🔗 **Live demo:** https://amazon-india-dashboard-edyavpmmhoh8xbqt8eaezt.streamlit.app — no installation needed.
 
 An interactive management dashboard, built with Streamlit and Plotly, for 10,000 Amazon India orders (Jan 2024 – Aug 2026).
 It answers the four business questions in the Sapphire IQ brief for a non-technical manager:
