@@ -1,0 +1,126 @@
+/* Amazon India Dashboard theme.
+   {{token}} placeholders are filled in by utils/ui.py for light or dark mode. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+html, body, [class*="css"], .stApp, .stMarkdown, button, input, textarea, select {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+/* ---------- App surfaces ---------- */
+.stApp { background: {{bg}}; color: {{text}}; }
+[data-testid="stHeader"] { background: transparent; }
+.block-container { padding-top: 1.6rem; padding-bottom: 2rem; max-width: 1500px; }
+
+.stApp p, .stApp li, .stApp label, .stApp span, .stApp h1, .stApp h2,
+.stApp h3, .stApp h4, .stApp h5, .stApp [data-testid="stMarkdownContainer"] {
+  color: {{text}};
+}
+[data-testid="stCaptionContainer"], .stApp small { color: {{muted}} !important; }
+
+/* ---------- Sidebar ---------- */
+[data-testid="stSidebar"] { background: {{sidebar}}; border-right: 3px solid {{orange}}; }
+[data-testid="stSidebar"] * { color: {{sidebar_text}}; }
+[data-testid="stSidebar"] [data-testid="stSidebarNavLink"] { border-radius: 8px; }
+[data-testid="stSidebar"] [data-testid="stSidebarNavLink"][aria-current="page"],
+[data-testid="stSidebar"] [data-testid="stSidebarNavLink"]:hover {
+  background: rgba(255, 153, 0, 0.18);
+}
+/* Readable sidebar text (Streamlit dims nav links and labels by default) */
+[data-testid="stSidebar"] [data-testid="stSidebarNavLink"] span,
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] *,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] *,
+[data-testid="stSidebar"] [data-testid="stExpander"] summary *,
+[data-testid="stSidebar"] label[data-baseweb="checkbox"] * {
+  color: #FFFFFF !important; opacity: 1 !important;
+}
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"] * { color: #D1D5DB !important; }
+[data-testid="stSidebar"] [data-testid="stExpander"] {
+  background: rgba(255,255,255,0.06) !important; border-color: rgba(255,255,255,0.2) !important;
+}
+[data-testid="stSidebar"] [data-baseweb="select"] *,
+[data-testid="stSidebar"] [data-baseweb="input"] * { color: #0F1111; }
+[data-testid="stSidebar"] [data-baseweb="tag"] { background: {{orange}}; }
+[data-testid="stSidebar"] [data-baseweb="tag"] span { color: {{navy}}; font-weight: 600; }
+[data-testid="stSidebar"] hr { border-color: rgba(255,255,255,0.18); }
+
+.brand { display: flex; align-items: center; gap: 10px; padding: 4px 0 10px; }
+.brand-mark {
+  width: 38px; height: 38px; border-radius: 10px; background: {{orange}};
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; color: {{navy}} !important; font-size: 20px;
+}
+.brand-name { font-weight: 800; font-size: 18px; line-height: 1.1; }
+.brand-sub { font-size: 12px; opacity: .75; }
+
+/* ---------- Buttons ---------- */
+.stDownloadButton button, .stButton button {
+  background: {{orange}}; color: {{navy}} !important; border: 0; font-weight: 700;
+  border-radius: 8px; width: 100%;
+}
+.stDownloadButton button *, .stButton button * { color: {{navy}} !important; }
+.stDownloadButton button:hover, .stButton button:hover { background: #F3A847; color: {{navy}}; }
+
+/* ---------- Page header ---------- */
+.page-header {
+  background: linear-gradient(90deg, {{squid}} 0%, {{navy}} 100%);
+  border-radius: 14px; padding: 18px 22px; margin-bottom: 18px;
+  border-bottom: 4px solid {{orange}};
+}
+.page-title { color: #FFFFFF !important; font-size: 26px; font-weight: 800; }
+.page-subtitle { color: #D1D5DB !important; font-size: 14px; margin-top: 2px; }
+
+/* ---------- KPI cards ---------- */
+.kpi-grid {
+  display: grid; gap: 14px; margin: 4px 0 18px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+.kpi-card {
+  background: {{surface}}; border: 1px solid {{border}}; border-radius: 14px;
+  padding: 14px 16px; border-top: 4px solid {{orange}};
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.kpi-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.10); }
+.kpi-top { display: flex; justify-content: space-between; align-items: center; }
+.kpi-label { color: {{muted}} !important; font-size: 12.5px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .04em; }
+.kpi-icon { font-size: 18px; }
+.kpi-value { color: {{text}} !important; font-size: 26px; font-weight: 800; margin-top: 6px;
+  font-variant-numeric: tabular-nums; }
+.kpi-card.kpi-text .kpi-value { font-size: 20px; line-height: 1.25; }
+.kpi-sub { color: {{text_2}} !important; font-size: 12.5px; margin-top: 2px; min-height: 16px; }
+.kpi-card.tone-good     { border-top-color: #0ca30c; }
+.kpi-card.tone-info     { border-top-color: #2a78d6; }
+.kpi-card.tone-warning  { border-top-color: #fab219; }
+.kpi-card.tone-critical { border-top-color: #d03b3b; }
+
+/* ---------- Sections & containers ---------- */
+.section-title { font-size: 18px; font-weight: 700; color: {{text}} !important; margin: 10px 0 2px; }
+.section-caption { font-size: 13px; color: {{muted}} !important; margin-bottom: 8px; }
+
+[data-testid="stPlotlyChart"], [data-testid="stVerticalBlockBorderWrapper"] {
+  border-radius: 14px;
+}
+[data-testid="stPlotlyChart"] {
+  background: {{surface}}; border: 1px solid {{border}}; padding: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+[data-testid="stVerticalBlockBorderWrapper"] { background: {{surface}}; border-color: {{border}} !important; }
+
+/* Tabs */
+.stTabs [data-baseweb="tab-list"] { gap: 6px; }
+.stTabs [data-baseweb="tab"] { background: {{surface}}; border-radius: 8px 8px 0 0; padding: 6px 14px; }
+.stTabs [aria-selected="true"] { border-bottom: 3px solid {{orange}} !important; }
+
+/* Expanders & tables in dark mode */
+[data-testid="stExpander"] { background: {{surface}}; border-color: {{border}}; border-radius: 12px; }
+[data-testid="stExpander"] summary * { color: {{text}} !important; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .page-title { font-size: 20px; }
+  .kpi-value { font-size: 21px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .block-container { padding-left: 0.8rem; padding-right: 0.8rem; }
+}
